@@ -13,19 +13,39 @@ public class AppTest
 {
 
     @Test
- public void givenMessage_WhenSad_ShouldReturnSad() throws Exception {
+ public void givenMessage_WhenSad_ShouldReturnSad() throws Exception
+    {
 
      MoodAnalyzer moodAnalyzer = new MoodAnalyzer(" I am in Sad mood");
      String mood = moodAnalyzer.AnalyseMood();
      Assert.assertThat(mood, CoreMatchers.is("SAD"));
- }
+   
+   }
     @Test
-    public void givenMessage_WhenAny_ShouldReturnHappy() throws Exception {
+    public void givenMessage_WhenAny_ShouldReturnHappy() throws Exception
+    {
 
       MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am Any mood");
       String mood = moodAnalyzer.AnalyseMood();
       Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    
     }
+    @Test
+    public void givenMessage_WhenNull_ShouldThrowMoodAnalysisNullException() 
+    {
+     MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+     try 
+     {
+        moodAnalyzer.AnalyseMood();
+     
+     } 
+     catch (MoodAnalyzerException e)
+     {
+         Assert.assertEquals(MoodAnalyzerException.ExceptionType.NULL_MESSAGE, e.type);
+    }
+
+ }
+
 
    
 
