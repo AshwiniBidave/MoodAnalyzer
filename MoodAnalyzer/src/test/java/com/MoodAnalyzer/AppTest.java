@@ -2,6 +2,8 @@ package com.MoodAnalyzer;
 
 import static org.junit.Assert.assertTrue;
 
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -9,12 +11,23 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+ public void givenMessage_WhenSad_ShouldReturnSad() throws Exception {
+
+     MoodAnalyzer moodAnalyzer = new MoodAnalyzer(" I am in Sad mood");
+     String mood = moodAnalyzer.AnalyseMood();
+     Assert.assertThat(mood, CoreMatchers.is("SAD"));
+ }
+    @Test
+    public void givenMessage_WhenAny_ShouldReturnHappy() throws Exception {
+
+      MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am Any mood");
+      String mood = moodAnalyzer.AnalyseMood();
+      Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
     }
+
+   
+
+
 }
