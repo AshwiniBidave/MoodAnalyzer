@@ -33,21 +33,35 @@ public class AppTest
     @Test
     public void givenMessage_WhenNull_ShouldThrowMoodAnalysisNullException() 
     {
-     MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
-     try 
-     {
+       MoodAnalyzer moodAnalyzer = new MoodAnalyzer(null);
+       try 
+      {
         moodAnalyzer.AnalyseMood();
      
-     } 
-     catch (MoodAnalyzerException e)
-     {
+      } 
+       catch (MoodAnalyzerException e)
+      {
          Assert.assertEquals(MoodAnalyzerException.ExceptionType.NULL_MESSAGE, e.type);
-    }
+      }
 
- }
+   }
+    @Test
+    public void givenMessage_WhenEmpty_ShouldThrowMoodAnalysisEmptyException()
+    {
+      MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
+      try 
+     {
+      moodAnalyzer.AnalyseMood();
+     } 
+      catch (MoodAnalyzerException e) 
+      {
+    	Assert.assertEquals(MoodAnalyzerException.ExceptionType.EMPTY_MESSAGE, e.type);
+      }
+    }
+  }
 
 
    
 
 
-}
+
